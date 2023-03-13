@@ -17,5 +17,5 @@ This repository will be a collection of software that I have written in Python. 
 ## Programs
 
 ***
-### [download_google_jwks_public_keys](Authorization/JWKS/Google/download_google_jwks_public_keys)
+### [download_google_jwks_public_keys](Authorization/JWKS/Google)
 Program to download Google JSON Web Keys and convert to RSA public keys.
