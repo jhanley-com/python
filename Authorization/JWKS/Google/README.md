@@ -1,4 +1,4 @@
-# Program to download Google JSON Web Keys and convert to RSA public keys.
+# Download Google JSON Web Keys and convert to RSA public keys
 
 ## Release Date
 March 12, 2023
