@@ -34,7 +34,10 @@ The Google JWKS endpoint for Google public keys is [https://www.googleapis.com/o
 ---
 ### Notes
 
-The JWK format is defined by [RFC7517](https://www.rfc-editor.org/rfc/rfc7517). Many vendors use JWKS to publish public keys.
+The JWK format is defined by [RFC7517](https://www.rfc-editor.org/rfc/rfc7517). Many vendors use JWKS to publish public keys. For example:
+- [Facebook](https://www.facebook.com/.well-known/oauth/openid/jwks/)
+- [Microsoft Azure AD](https://login.windows.net/common/discovery/keys)
+- [Salesforce](https://login.salesforce.com/id/keys)
 
 Refer to the related code that processes [X.509 certificates](../../CERT/Google).
 

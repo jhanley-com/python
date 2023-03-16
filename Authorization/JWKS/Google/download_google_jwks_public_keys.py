@@ -27,6 +27,7 @@ The filename is "public_" + Key ID + "_jwks.pem"
 """
 
 import os
+import re
 import sys
 from base64 import b64decode
 from datetime import datetime, timedelta
@@ -88,10 +89,48 @@ def errorText(msg):
 	sys.stderr.flush()
 	sys.stderr.write(f"{colors.red}{msg}{colors.ENDC}")
 
+def formatKid(kid):
+	"""
+	The function converts the kid to a hex string if necessary
+
+	The 'kid' is be the X.509 certificate SHA-1 thumbprint.
+	This is normally represented as 40 hex digits (SHA-1 digest is 20 bytes)
+	Google: kid is the SHA-1 digest using hex digits
+	Microsoft Azure AD: kid is the base64url encoding of the SHA-1 digest
+		https://login.windows.net/common/discovery/keys
+	"""
+
+	# check if kid looks like a hex string
+	if re.search("^[0-9a-fA-F]+$", kid):
+		return kid
+
+	decoded_kid = base64urldecode(kid)
+	# A decoded base64url string should be 20 byte long for SHA-1
+	if len(decoded_kid) == 20:
+		n = int.from_bytes(base64urldecode(kid))
+		nkid = f'{n:x}'
+
+		# the hex string should be 40 or fewer hex digits
+		# I expect that SHA-256 will replace SHA-1 for thumbprints eventually
+		if len(nkid) > 40:
+			# Something is wrong, don't convert
+			return kid
+
+		# insert leading zero chars to make the string 40 digits
+		while len(nkid) < 40:
+			nkid = '0' + nkid
+
+		kid = nkid
+
+	return kid
+
 def make_filename(kid):
 	"""
 	The filename is "public_" + Key ID + "_jwks.pem"
 	"""
+
+	kid = formatKid(kid)
+
 	return 'public_' + kid + '_jwks.pem'
 
 def base64urldecode(data):
