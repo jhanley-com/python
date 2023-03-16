@@ -15,5 +15,5 @@ MIT Licensed. Refer to [copyright.txt](../../copyright.txt) and [LICENSE](../../
 Program to download Google X.509 certificates and convert to RSA public keys.
 
 ***
-### [fingerprint](fingerprint/PyCryptodome)
+### [fingerprint/PyCryptodome](fingerprint/PyCryptodome)
 Progam to display an X.509 certificate fingerprint using the PyCryptodome library

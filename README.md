@@ -25,5 +25,5 @@ Program to download Google JSON Web Keys and convert to RSA public keys.
 Program to download Google X.509 certificates and convert to RSA public keys.
 
 ***
-### [fingerprint](Authorization/CERT/fingerprint/PyCryptodome)
+### [fingerprint/PyCryptodome](Authorization/CERT/fingerprint/PyCryptodome)
 Progam to display an X.509 certificate fingerprint using the PyCryptodome library
